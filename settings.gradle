@@ -1,0 +1,22 @@
+// 这个文件配置 需要编译那些模块
+
+// 你在 打包下载 plugins 的时候， 用到的 repos
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+
+// 你在 打包下载 dependencies 的时候， 用到的 repos（我告诉你 去哪个地方下载）
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+rootProject.name = "FirstApp"
+// 表示 我们现在要 编译 app 这个模块
+include ':app'
