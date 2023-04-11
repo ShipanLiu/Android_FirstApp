@@ -9,4 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <!-- 自己定义的 世屎黄色-->
     <color name="shit_yellow">#FFC935</color>
+    <color name="my_gray">#EEEEEE</color>
+    <color name="my_light_purple">#AAB0FE</color>
+
 </resources>
