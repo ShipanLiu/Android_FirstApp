@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- 创建一个 textview， 宽度 和 高度 是 包裹内容-->
+    <!--@string/hello_string 是在 res/values/string.xml 里面 定义的 string 拿出来-->
+<!--    同理  @color 也是这样的-->
+    <TextView
+        android:id="@+id/tv_hello"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/hello_string1"
+        ></TextView>
+
+</LinearLayout>

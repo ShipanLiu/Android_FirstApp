@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+
+    <!-- 因为在对应的 t04_testColorActivity 中把 颜色设置成了绿色， 所以 black 被覆盖 -->
+    <TextView
+        android:id="@+id/testTextColorId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="testTextColor"
+        android:textSize="17sp"
+        android:textColor="@color/black"
+        ></TextView>
+
+    <!-- 在 XML 里面设置文本的颜色-->
+    <TextView
+        android:id="@+id/testTextColorId2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="testTextColor"
+        android:textSize="17sp"
+        android:textColor="@color/shit_yellow"></TextView>
+
+</LinearLayout>

@@ -11,15 +11,27 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FirstApp"
         tools:targetApi="31">
+
+        <!-- 指定了 该app 拥有活动页面的 信息， 你要是像 显示 一个页面， 那在这里注册一下 -->
+        <!-- name=".MainActivity"  这就是 刚打开app 的时候的 主页 -->
         <activity
             android:name=".MainActivity"
             android:exported="true">
+
+            <!-- intent-filter 表明 哪个页面是 老大 -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
+        <activity android:name=".MainActivity2" />
+
+        <activity
+            android:name=".MainActivity3"
+            android:exported="false" />
     </application>
 
 </manifest>

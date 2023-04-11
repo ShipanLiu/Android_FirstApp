@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".t11_button_style"
+    android:orientation="vertical"
+    android:padding="5dp"
+    >
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="下面的按钮英文默认大写"
+        android:textColor="@color/black"
+        android:textSize="17sp" />
+
+    <Button
+        android:id="@+id/btn_click_id1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="点击显示时间1"
+        android:textColor="@color/black"
+        android:textSize="17sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="下面的按钮英文保持原状"
+        android:textColor="@color/black"
+        android:textSize="17sp" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Hello World"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="17sp"/>
+
+<!--    不建议 用 android:onClick="doClick"， 这叫硬编码，  这叫 高耦合， 可插拔-->
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="点击显示时间2"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="17sp"
+        android:onClick="doClick"/>
+
+    <!--点击 按钮之后， 把 当前的时间显示 在这个地方-->
+
+    <TextView
+        android:id="@+id/tv_result"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="这里查看按钮的点击结果"
+        android:textColor="@color/black"
+        android:textSize="17sp" />
+
+</LinearLayout>

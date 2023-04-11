@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="300dp"
+    android:background="@color/black"
+    android:orientation="horizontal">
+
+    <!-- 第一个子布局背景为红色，它在上级视图中朝下对齐，它的下级视图则靠左对齐 -->
+    <!--
+        android:layout_weight 就是 占重比
+        android:layout_gravity="bottom"  就是主角框 在 父亲框 中的位置
+        android:gravity="left"  就是 主角框 里面元素的 位置
+
+    -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:layout_gravity="bottom"
+        android:layout_margin="10dp"
+        android:layout_weight="1"
+        android:background="#ff0000"
+        android:padding="10dp"
+        android:gravity="left|bottom">
+
+        <!-- 内部视图的宽度和高度都是100dp，且背景色为青色 -->
+        <View
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="#00ffff" />
+
+    </LinearLayout>
+
+    <!-- 第二个子布局背景为红色，它在上级视图中朝上对齐，它的下级视图则靠右对齐 -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:layout_gravity="top"
+        android:layout_margin="10dp"
+        android:layout_weight="1"
+        android:background="#ff0000"
+        android:padding="10dp"
+        android:gravity="right">
+
+        <View
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="#00ffff"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>
