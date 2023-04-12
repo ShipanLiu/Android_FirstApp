@@ -10,6 +10,9 @@ import android.widget.TextView;
 public class t14_Calculator extends AppCompatActivity implements View.OnClickListener {
 
     private TextView textView;
+    // = 键
+    private Button equalBtn;
+
     // 第一个操作数
     private String firstNum = "";
     // 运算符
@@ -46,7 +49,8 @@ public class t14_Calculator extends AppCompatActivity implements View.OnClickLis
         findViewById(R.id.btn_reciprocal).setOnClickListener(this); // 求倒数按钮
         findViewById(R.id.btn_zero).setOnClickListener(this); // 数字0
         findViewById(R.id.btn_dot).setOnClickListener(this); // “小数点”按钮
-        findViewById(R.id.btn_equal).setOnClickListener(this); // “等号”按钮
+        equalBtn = findViewById(R.id.btn_equal);
+        equalBtn.setOnClickListener(this); // “等号”按钮
         findViewById(R.id.ib_sqrt).setOnClickListener(this); // “开平方”按钮
 
     }
@@ -71,33 +75,49 @@ public class t14_Calculator extends AppCompatActivity implements View.OnClickLis
                 break;
             // 点击了取消按钮
             case R.id.btn_cancel:
+                clear();
                 break;
             // 点击了加、减、乘、除按钮
             case R.id.btn_plus:
             case R.id.btn_minus:
             case R.id.btn_multiply:
             case R.id.btn_divide:
+                // 按下 operator 之后，就会立刻显示
                 operator = inputText; // 运算符
                 refreshText(showText + operator); // 字符串是 一个累加的过程
+                // enable 等号键
+                equalBtn.setEnabled(true);
                 break;
             // 点击了等号按钮
             case R.id.btn_equal:
                 // 加减乘除四则运算
-                double calculate_result = calculateFour();
-                refreshOperate(String.valueOf(calculate_result));
-                refreshText(showText + "=" + result);
-                break;
+                if(firstNum.equals("") || operator.equals("") || secondNum.equals("")) {
+                    // 防止上来就按下等号的情况, 或者 第二个操作数没有input， 就按下 =
+                    break;
+                } else {
+                    double calculate_result = calculateFour();
+                    refreshOperate(String.valueOf(calculate_result));
+                    refreshText(showText + "=" + result);
+                    //然后禁用 = button , 这里防止连按两次
+                    equalBtn.setEnabled(false);
+                    break;
+                }
+
             // 点击了开根号按钮
             case R.id.ib_sqrt:
                 double sqrt_result = Math.sqrt(Double.parseDouble(firstNum));
-                refreshOperate(String.valueOf(sqrt_result));
+                refreshOperate(String.valueOf(sqrt_result)); // 里面把 double 换成 string
                 refreshText(showText + "√=" + result);
+                //然后禁用 = button
+                equalBtn.setEnabled(false);
                 break;
             // 点击了求倒数按钮
             case R.id.btn_reciprocal:
                 double reciprocal_result = 1.0 / Double.parseDouble(firstNum);
                 refreshOperate(String.valueOf(reciprocal_result));
                 refreshText(showText + "/=" + result);
+                //然后禁用 = button
+                equalBtn.setEnabled(false);
                 break;
             // 点击了其他按钮，包括数字和小数点
             default:
@@ -106,14 +126,16 @@ public class t14_Calculator extends AppCompatActivity implements View.OnClickLis
                     clear();
                 }
 
-                // 无运算符，则继续拼接第一个操作数
+                // 无运算符，则继续拼接第一个操作数， 根据判断 运算符 就可以 发现 你计算到那一步了
                 if (operator.equals("")) {
+                    System.out.println("firstNum");
                     firstNum = firstNum + inputText;
                 } else {
                     // 有运算符，则继续拼接第二个操作数
                     secondNum = secondNum + inputText;
                 }
-                // 整数不需要前面的0
+                // 整数不需要前面的0， 比如输入一个0 再输入一个 8， 然后显示 08 是不允许的，  但是0. 是被允许的
+                // showText 是 拼接完的 String， inputText 是 刚刚背按下的按键的 String
                 if (showText.equals("0") && !inputText.equals(".")) {
                     refreshText(inputText);
                 } else {
