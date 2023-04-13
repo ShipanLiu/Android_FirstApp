@@ -21,3 +21,4 @@ rootProject.name = "FirstApp"
 // 表示 我们现在要 编译 app 这个模块
 include ':app'
 include ':chapter03'
+include ':chapter04_activity'

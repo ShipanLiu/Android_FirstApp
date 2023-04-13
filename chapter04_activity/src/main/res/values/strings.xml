@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">chapter04_activity</string>
+    <string name="jump_to_next">jump to next page</string>
+</resources>
