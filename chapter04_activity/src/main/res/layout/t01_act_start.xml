@@ -7,10 +7,17 @@
     android:gravity="center">
 
     <Button
-        android:id="@+id/btn_act_next"
+    android:id="@+id/btn_act_next"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/jump_to_next" />
+
+
+    <!-- 测试 点击 “login” 之后 按下手机的”返回“键， 那些 验证码，短信的 页面就回不去了-->
+    <Button
+        android:id="@+id/btn_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/jump_to_next"
-        />
+        android:text="login" />
 
 </LinearLayout>
