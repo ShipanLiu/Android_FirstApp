@@ -4,13 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".t01_ActStartActivity"
-    android:gravity="center">
+    android:gravity="center"
+    android:orientation="vertical">
 
     <Button
-    android:id="@+id/btn_act_next"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="@string/jump_to_next" />
+        android:id="@+id/btn_act_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:text="@string/jump_to_next"/>
 
 
     <!-- 测试 点击 “login” 之后 按下手机的”返回“键， 那些 验证码，短信的 页面就回不去了-->
@@ -18,6 +20,13 @@
         android:id="@+id/btn_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="login" />
+        android:textAllCaps="false"
+        android:text="login,does not allow next page go back, exist the app if go back" />
+
+    <TextView
+        android:id="@+id/show_response_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
 
 </LinearLayout>

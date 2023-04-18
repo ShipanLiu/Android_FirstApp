@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">chapter04_activity</string>
-    <string name="jump_to_next">jump to next page</string>
+    <string name="jump_to_next">jump to next page with response</string>
+    <!--
+
+    这些 strings 是放在配置信息里面的， 因为， 假如你需要 更改的话， 你不需要 改动 java 代码，
+    而是改动配置 文件中的 value 就行
+
+    -->
+    <string name="weather">this is from string.xml: 晴天</string>
 </resources>

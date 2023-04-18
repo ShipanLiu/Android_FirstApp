@@ -8,18 +8,25 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FirstApp">
         <activity
-            android:name=".t02_ActEndActivity"
-            android:exported="false" />
-
-        <!-- 这里是 主要的 Activity-->
-        <activity
             android:name=".t01_ActStartActivity"
+            android:exported="false" />
+        <activity
+            android:name=".t02_ActEndActivity"
+            android:exported="false" /> <!-- 这里是 主要的 Activity -->
+        <activity
+            android:name=".t03_readStringFromXML"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+            <!-- 在 使用第三方sdk 的时候， 要嵌入， 比如使用 高德地图-->
+            <meta-data android:name="gaode_map" android:value="this is from AndroidManifest.xml:  token from GaoDe Map"/>
+
+            <!-- 自定义 一些 shortcuts， 长按app 图标， 会显示 -->
+
         </activity>
     </application>
 

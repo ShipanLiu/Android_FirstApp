@@ -7,7 +7,14 @@
     tools:context=".t02_ActEndActivity"
     android:orientation="vertical">
 
+
+
     <!--左上角 有一个 返回键 ， 按一下 就会返回-->
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="测试 返回: "/>
 
     <ImageView
         android:id="@+id/back_img"
@@ -22,7 +29,28 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:textAllCaps="false"
         android:text="Finished"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="测试 返回 带有信息: "/>
+
+    <TextView
+        android:id="@+id/show_request_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+
+    <Button
+        android:id="@+id/btn_closePage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textAllCaps="false"
+        android:text="Go back to previous page with response"/>
 
 
 
