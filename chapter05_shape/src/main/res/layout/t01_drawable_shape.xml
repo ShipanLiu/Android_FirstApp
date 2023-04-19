@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".t01_DrawableShape"
+    android:orientation="vertical"
+    >
+
+    <View
+        android:id="@+id/v_content"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_margin="10dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_rect"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="rectangle shape"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btn_oval"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="oval shape"
+            android:textAllCaps="false" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="normal photo"
+            android:background="@drawable/button_normal"
+            android:textAllCaps="false" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text=".9 photo"
+            android:background="@drawable/button_normal_orig"
+            android:textAllCaps="false" />
+
+    </LinearLayout>
+
+    <!--checkbox-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <CheckBox
+            android:id="@+id/ck_system"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:checked="true"
+            android:text="系统checkbox"/>
+
+        <!--自定义 checkbox， 使用自己的 button 图片， 默认 checked-->
+
+        <CheckBox
+            android:id="@+id/ck_custom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:padding="5dp"
+            android:button="@drawable/checkbox_selector"
+            android:checked="true"
+            android:text="自定义checkbox"/>
+
+    </LinearLayout>
+
+    <!-- switch-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="30dp">
+
+
+        <!-- android:layout_weight="1"  除了 the 80dp of switch, the rest space belongs to only TextView -->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_weight="1"
+            android:padding="5dp"
+            android:text="Switch开关：" />
+
+        <Switch
+            android:id="@+id/sw_status1"
+            android:layout_width="80dp"
+            android:layout_height="30dp"
+            android:layout_gravity="end"
+            android:padding="5dp" />
+
+    </LinearLayout>
+
+    <!--switch like ios-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_weight="1"
+            android:padding="5dp"
+            android:text="IOS Switch开关：" />
+
+        <!-- 自定义的switch 应该以 checkbox 为原型-->
+        <CheckBox
+            android:id="@+id/sw_status2"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:layout_gravity="end"
+            android:background="@drawable/switch_selector"
+            android:button="@null" />
+
+    </LinearLayout>
+
+    <!--android:gravity="start" ： 文字 从左边开始显示-->
+    <TextView
+        android:id="@+id/tv_sw_result"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="start" />
+
+
+    <Button
+        android:id="@+id/btn_jump"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="点击到下一个页面,测试各种组件"/>
+
+
+</LinearLayout>

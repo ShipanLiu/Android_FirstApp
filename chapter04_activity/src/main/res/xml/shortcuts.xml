@@ -1,4 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <shortcut
+        android:enabled="true"
+        android:icon="@mipmap/ic_launcher"
+        android:shortcutId="first"
+        android:shortcutLongLabel="@string/first_long"
+        android:shortcutShortLabel="@string/first_short">
+
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetClass="com.example.chapter04_activity.t01_ActStartActivity"
+            android:targetPackage="com.example.chapter04_activity" />
+        <categories android:name="android.shortcut.conversation" />
+    </shortcut>
+
+
+    <shortcut
+        android:enabled="true"
+        android:icon="@mipmap/ic_launcher"
+        android:shortcutId="second"
+        android:shortcutLongLabel="@string/second_long"
+        android:shortcutShortLabel="@string/second_short">
+
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetClass="com.example.chapter04_activity.t04_shortCutJumpToThisPage"
+            android:targetPackage="com.example.chapter04_activity" />
+        <categories android:name="android.shortcut.conversation" />
+    </shortcut>
+
+    <shortcut
+        android:enabled="true"
+        android:icon="@mipmap/ic_launcher"
+        android:shortcutId="third"
+        android:shortcutLongLabel="@string/third_long"
+        android:shortcutShortLabel="@string/third_short">
+
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetClass="com.example.chapter04_activity.t04_shortCutJumpToThisPage"
+            android:targetPackage="com.example.chapter04_activity" />
+        <categories android:name="android.shortcut.conversation" />
+    </shortcut>
+
 </shortcuts>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--checkbox 被选中 和 没选中的时候-->
+    <item android:state_checked="true" android:drawable="@drawable/check_choose"/>
+    <item android:state_checked="false" android:drawable="@drawable/check_unchoose"/>
+</selector>

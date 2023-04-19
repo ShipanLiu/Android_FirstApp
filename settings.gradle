@@ -22,3 +22,4 @@ rootProject.name = "FirstApp"
 include ':app'
 include ':chapter03'
 include ':chapter04_activity'
+include ':chapter05_shape'

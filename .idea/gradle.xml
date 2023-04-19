@@ -15,6 +15,7 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/chapter03" />
             <option value="$PROJECT_DIR$/chapter04_activity" />
+            <option value="$PROJECT_DIR$/chapter05_shape" />
           </set>
         </option>
       </GradleProjectSettings>

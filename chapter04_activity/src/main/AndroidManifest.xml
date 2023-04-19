@@ -7,6 +7,11 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.FirstApp">
+
+        <!-- 因为是 shortcut 要跳转到这个页面， 所以： android:exported="true" -->
+        <activity
+            android:name=".t04_shortCutJumpToThisPage"
+            android:exported="true" />
         <activity
             android:name=".t01_ActStartActivity"
             android:exported="false" />
@@ -22,10 +27,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
-            <!-- 在 使用第三方sdk 的时候， 要嵌入， 比如使用 高德地图-->
-            <meta-data android:name="gaode_map" android:value="this is from AndroidManifest.xml:  token from GaoDe Map"/>
+            <!-- 在 使用第三方sdk 的时候， 要嵌入， 比如使用 高德地图 -->
+            <meta-data
+                android:name="gaode_map"
+                android:value="this is from AndroidManifest.xml:  token from GaoDe Map" />
 
-            <!-- 自定义 一些 shortcuts， 长按app 图标， 会显示 -->
+            <!-- 自定义 一些 shortcuts， 长按app 图标， 会显示 , 无所谓， 因为不是 functional requirement-->
+            <meta-data
+                android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts" />
 
         </activity>
     </application>
