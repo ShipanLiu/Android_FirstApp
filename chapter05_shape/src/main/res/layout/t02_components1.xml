@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".t02_Components1"
+    android:orientation="vertical"
+    >
+    <!--显示 前页的消息-->
+    <TextView
+        android:id="@+id/v_req_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="here is the request msg from previous page"
+        android:layout_marginVertical="10dp"
+        android:padding="5dp"
+        android:layout_gravity="start"
+        android:background="@color/cardview_shadow_start_color"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/purple_200"
+        android:layout_marginTop="10dp"
+        android:padding="5dp"
+        android:text="please choose your gender"/>
+
+    <RadioGroup
+        android:id="@+id/radio_group_gender"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <RadioButton
+            android:id="@+id/radio_male"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="男" />
+
+        <RadioButton
+            android:id="@+id/radio_female"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="女" />
+
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/tv_radio_result"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_marginTop="10dp" />
+
+
+
+
+    <!--simple text box-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/light_blue">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="下面是登录信息,this is the default info" />
+
+        <EditText
+            android:id="@+id/textBox_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="手机号："
+            android:inputType="number"
+            android:maxLength="11"/>
+
+        <!-- 鼠标选中了， 就会变颜色-->
+        <!-- 事件监听， 在 输入密码， focuse 的时候， 查看手机号是否为 11 位-->
+        <EditText
+            android:id="@+id/textBox_pwd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/editbox_selector"
+            android:layout_marginTop="5dp"
+            android:hint="密码："
+            android:inputType="numberPassword"
+            android:maxLength="6"/>
+        <Button
+            android:id="@+id/textBox_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Login"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/black"/>
+    </LinearLayout>
+
+
+
+<!--        test alert-->
+
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            android:background="@color/light_red">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_alert1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginHorizontal="2dp"
+                    android:backgroundTint="@color/black"
+                    android:textColor="@color/white"
+                    android:textAllCaps="false"
+                    android:text="alert1"/>
+
+                <Button
+                    android:id="@+id/btn_alert2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginHorizontal="2dp"
+                    android:backgroundTint="@color/black"
+                    android:textColor="@color/white"
+                    android:textAllCaps="false"
+                    android:text="alert2"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_alert"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btn_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:text="弹出日期对话框" />
+
+        <DatePicker
+            android:id="@+id/data_picker"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:calendarViewShown="false"
+            android:datePickerMode="spinner" />
+
+        <Button
+            android:id="@+id/btn_ok"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:text="DatePicker ok" />
+
+        <TextView
+            android:id="@+id/tv_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+
+</LinearLayout>

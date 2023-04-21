@@ -153,7 +153,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="点击到下一个页面,测试各种组件"/>
+        android:text="组件group1"/>
+    <Button
+        android:id="@+id/btn_jump2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="组件group2"/>
 
 
 </LinearLayout>
