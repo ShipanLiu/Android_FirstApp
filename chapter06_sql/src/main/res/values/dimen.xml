@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--这里面定义所有的 组件的 高度-->
+<resources>
+    <dimen name="common_font_size">17sp</dimen>
+    <dimen name="button_font_size">20sp</dimen>
+    <dimen name="item_layout_height">40dp</dimen>
+</resources>

@@ -1,4 +1,4 @@
-package com.example.chapter05_shape.utils;
+package com.example.chapter06_sql.utils;
 
 import android.app.Activity;
 import android.content.Context;

@@ -12,14 +12,14 @@
         <activity
             android:name=".t04_shortCutJumpToThisPage"
             android:exported="true" />
-        <activity
-            android:name=".t01_ActStartActivity"
-            android:exported="false" />
+<!--        <activity-->
+<!--            android:name=".t01_ActStartActivity"-->
+<!--            android:exported="false" />-->
         <activity
             android:name=".t02_ActEndActivity"
             android:exported="false" /> <!-- 这里是 主要的 Activity -->
         <activity
-            android:name=".t03_readStringFromXML"
+            android:name=".t01_ActStartActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
