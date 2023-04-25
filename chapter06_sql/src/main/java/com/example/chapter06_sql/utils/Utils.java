@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -35,6 +36,10 @@ public class Utils {
 
     public static String create6RandomSmsCode() {
         return String.format("%06d", new Random().nextInt(999999));
+    }
+
+    public static void showToast(Context ctx, String desc) {
+        Toast.makeText(ctx, desc, Toast.LENGTH_SHORT).show();
     }
 
 

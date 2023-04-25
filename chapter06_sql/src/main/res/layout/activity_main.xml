@@ -20,7 +20,13 @@
         android:id="@+id/btn_sqlLite"
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_layout_height"
-        android:text="......"
+        android:text="SQLiteHelper"
+        android:textAllCaps="false"/>
+    <Button
+        android:id="@+id/btn_phone_password"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_layout_height"
+        android:text="Phone忘记密码升级"
         android:textAllCaps="false"/>
 
 

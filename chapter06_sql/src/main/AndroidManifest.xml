@@ -8,6 +8,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FirstApp">
         <activity
+            android:name=".t03_PhonePassowrdUsingSQL"
+            android:exported="false" />
+        <activity
             android:name=".t02_SQLite"
             android:exported="false" />
         <activity

@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         // SharedPreferences 存储 案例 1
         findViewById(R.id.btn_sharedPreferences1).setOnClickListener(this);
         findViewById(R.id.btn_sqlLite).setOnClickListener(this);
+        findViewById(R.id.btn_phone_password).setOnClickListener(this);
     }
 
     @Override
@@ -39,6 +40,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Intent intent2 = new Intent(this, t02_SQLite.class);
                 intent2.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent2);
+                break;
+            case R.id.btn_phone_password:
+                Intent intent3 = new Intent(this, t03_PhonePassowrdUsingSQL.class);
+                intent3.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent3);
                 break;
         }
     }

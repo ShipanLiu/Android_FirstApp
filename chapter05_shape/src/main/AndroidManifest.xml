@@ -8,20 +8,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FirstApp">
         <activity
+            android:name=".t02_Components3"
+            android:exported="false" />
+        <activity
             android:name=".t04_ProjectFogetPassword"
             android:exported="false" />
         <activity
-            android:name=".t01_DrawableShape"
+            android:name=".t03_ProjectFindPassword"
             android:exported="false" />
         <activity
             android:name=".t02_Components2"
             android:exported="false" />
         <activity
             android:name=".t02_Components1"
-            android:exported="false" />
-        <!-- 这里是  主 Activity -->
+            android:exported="false" /> <!-- 这里是  主 Activity -->
         <activity
-            android:name=".t03_ProjectFindPassword"
+            android:name=".t01_DrawableShape"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

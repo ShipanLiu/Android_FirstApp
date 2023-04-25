@@ -1,4 +1,4 @@
-package com.example.chapter05_shape;
+package com.example.chapter06_sql;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
@@ -22,9 +22,10 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.chapter05_shape.utils.Utils;
+import com.example.chapter06_sql.utils.Utils;
 
-public class t03_ProjectFindPassword extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener, View.OnClickListener {
+
+public class t03_PhonePassowrdUsingSQL extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener, View.OnClickListener {
 
     private TextView textView_pwd;
     private EditText editText_pwd;
@@ -49,7 +50,7 @@ public class t03_ProjectFindPassword extends AppCompatActivity implements RadioG
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.t03_project_login_find_password);
+        setContentView(R.layout.t03_phone_passowrd_using_sql);
 
         // for radiogroup
         RadioGroup radioGroup = findViewById(R.id.radio_group_login_method);
@@ -178,7 +179,7 @@ public class t03_ProjectFindPassword extends AppCompatActivity implements RadioG
             // 在 phone 那个区域 完成输入之后
             // 隐藏软键盘， 在 输入maxLen 之后
             if(editable.toString().length() == maxLen) {
-                Utils.hideKeyboard(t03_ProjectFindPassword.this, editText);
+                Utils.hideKeyboard(t03_PhonePassowrdUsingSQL.this, editText);
             }
         }
     }
@@ -196,14 +197,14 @@ public class t03_ProjectFindPassword extends AppCompatActivity implements RadioG
                     return;
                 }
                 // 假如满足了 11 位
-                // check if 点击的是 "发送验证码", 跳到找回密码界面
+                // check if 点击的是 "找回密码", 跳到找回密码界面
                 if(radioButton_pwd.isChecked()) {
                     // create new Intent
-                    Intent intent1 = new Intent(this, t04_ProjectFogetPassword.class);
-                    intent1.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    intent1.putExtra("phoneNrStr", phoneNrStr);
-                    // 因为还需要返回结果， 所以不使用 putActivity, 使用register
-                    register1.launch(intent1);
+//                    Intent intent1 = new Intent(this, t04_ProjectFogetPassword.class);
+//                    intent1.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                    intent1.putExtra("phoneNrStr", phoneNrStr);
+//                    // 因为还需要返回结果， 所以不使用 putActivity, 使用register
+//                    register1.launch(intent1);
                 } else if(radioButton_sms.isChecked()) {
                     // 假如 选择的是sms 登陆， 那就生成 6 位 随机的验证码
                     sms_code = Utils.create6RandomSmsCode();
@@ -215,7 +216,7 @@ public class t03_ProjectFindPassword extends AppCompatActivity implements RadioG
                         // 关闭 AlertDialog 的同时， 把 sms code 填进去
                         editText_pwd.setText(phoneNrStr);
                     });
-                    AlertDialog alertDialog = builder.create();
+                    AlertDialog alertDialog = b uilder.create();
                     alertDialog.show();
                 }
 
@@ -261,11 +262,14 @@ public class t03_ProjectFindPassword extends AppCompatActivity implements RadioG
 
         // 登陆成功之后，把密码存起来
         if(checkBox_pwd_remember.isChecked()) {
-            SharedPreferences.Editor editer = preferences.edit();
-            editer.putString("phone", editText_phone.getText().toString());
-            editer.putString("pwd", editText_pwd.getText().toString());
-            editer.putBoolean("pwd_remembered", checkBox_pwd_remember.isChecked());
-            editer.commit();
+//            SharedPreferences.Editor editer = preferences.edit();
+//            editer.putString("phone", editText_phone.getText().toString());
+//            editer.putString("pwd", editText_pwd.getText().toString());
+//            editer.putBoolean("pwd_remembered", checkBox_pwd_remember.isChecked());
+//            editer.commit();
+
+            // 存到数据库里面
+
         }
 
     }

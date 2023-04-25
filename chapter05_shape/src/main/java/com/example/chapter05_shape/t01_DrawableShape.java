@@ -66,6 +66,7 @@ public class t01_DrawableShape extends AppCompatActivity implements View.OnClick
 
         // jump 2 button 的 监听
         findViewById(R.id.btn_jump2).setOnClickListener(this);
+        findViewById(R.id.btn_jump3).setOnClickListener(this);
 
     }
 
@@ -96,8 +97,13 @@ public class t01_DrawableShape extends AppCompatActivity implements View.OnClick
                 // create bundle and diliver someinformation
                 startActivity(intent2);
                 break;
-
-
+            case R.id.btn_jump3:
+                // create Intent
+                Intent intent3 = new Intent(this, t02_Components3.class);
+                intent3.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                // create bundle and diliver someinformation
+                startActivity(intent3);
+                break;
 
             default:
                 break;
