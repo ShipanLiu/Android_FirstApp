@@ -216,7 +216,7 @@ public class t03_PhonePassowrdUsingSQL extends AppCompatActivity implements Radi
                         // 关闭 AlertDialog 的同时， 把 sms code 填进去
                         editText_pwd.setText(phoneNrStr);
                     });
-                    AlertDialog alertDialog = b uilder.create();
+                    AlertDialog alertDialog = builder.create();
                     alertDialog.show();
                 }
 

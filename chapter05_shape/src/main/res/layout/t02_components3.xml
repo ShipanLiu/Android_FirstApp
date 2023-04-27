@@ -7,12 +7,14 @@
     tools:context=".t02_Components3"
     android:orientation="vertical">
 
+<!-- scrollview里面只能 有一个 LinearLayout-->
 
-    <!--spinner 的展示-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
+        <!--spinnerdropdown 的展示-->
 
         <TextView
             android:layout_width="match_parent"
@@ -27,6 +29,19 @@
             android:spinnerMode="dropdown" />
 
 
+        <!--SpinnerDialog-->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="下拉模式的列表框"
+            android:textSize="17sp" />
+
+        <Spinner
+            android:id="@+id/sp_dialog1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:spinnerMode="dialog" />
 
 
     </LinearLayout>

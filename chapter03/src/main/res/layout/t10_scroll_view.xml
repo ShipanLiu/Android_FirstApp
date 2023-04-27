@@ -28,6 +28,8 @@
 
     </HorizontalScrollView>
 
+    <!--  注意： 一个 Scrollview 里面 不能有 多个 LinearLayout-->
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">

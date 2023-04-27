@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<!--就是 为 Spinner 下拉的那个小框 提供一个框架-->
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:gravity="center"
+    android:textColor="#0000ff"
+    android:textSize="17sp"
+    tools:text="火星" />
+
+    <!--tools:text="火星" 就是为了，在 preview 里面 显示 文字， 就是 testig 用的。 -->
+
+
+

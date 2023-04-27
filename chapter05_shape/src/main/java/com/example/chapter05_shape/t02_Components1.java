@@ -23,6 +23,10 @@ public class t02_Components1 extends AppCompatActivity implements RadioGroup.OnC
     private TextView tv_info;
     private TextView tv_radio_result;
 
+    //radio group
+    private RadioGroup radioGroup;
+
+
     // EditText
     private EditText textBox_phone;
     private EditText textBox_pwd;
@@ -35,6 +39,7 @@ public class t02_Components1 extends AppCompatActivity implements RadioGroup.OnC
     private TextView tv_date;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +48,7 @@ public class t02_Components1 extends AppCompatActivity implements RadioGroup.OnC
         // find
         tv_info = findViewById(R.id.v_req_info);
         tv_radio_result = findViewById(R.id.tv_radio_result);
-        RadioGroup radioGroup = findViewById(R.id.radio_group_gender);
+        radioGroup = findViewById(R.id.radio_group_gender);
 
 
         // find -- EditText
@@ -95,6 +100,7 @@ public class t02_Components1 extends AppCompatActivity implements RadioGroup.OnC
 
     @Override
     public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
+
         switch(checkedId) {
             case R.id.radio_male:
                 tv_radio_result.setText("male is chosen, and the chosenId: " + radioGroup.getCheckedRadioButtonId());
