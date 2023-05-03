@@ -25,6 +25,7 @@ public class t02_Components2 extends AppCompatActivity implements View.OnClickLi
         timePicker = findViewById(R.id.time_picker);
         timePicker.setIs24HourView(true);
         timePicker_result = findViewById(R.id.tv_timePicker_result);
+
         findViewById(R.id.btn_timePicker_ok).setOnClickListener(this);
         findViewById(R.id.btn_timePicker_dialog).setOnClickListener(this);
 

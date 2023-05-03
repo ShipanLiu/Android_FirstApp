@@ -8,6 +8,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FirstApp">
         <activity
+            android:name=".t02_Components4_listView"
+            android:exported="false" />
+        <activity
             android:name=".t02_Components3"
             android:exported="false" />
         <activity

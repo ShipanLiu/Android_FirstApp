@@ -72,16 +72,16 @@
             android:layout_height="wrap_content"
             android:text="下面是登录信息,this is the default info" />
 
+        <!-- 鼠标选中了， 就会变颜色-->
+        <!-- 事件监听， 在 输入密码， focuse 的时候， 查看手机号是否为 11 位-->
         <EditText
             android:id="@+id/textBox_phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="手机号："
             android:inputType="number"
-            android:maxLength="11"/>
+            android:maxLength="11" />
 
-        <!-- 鼠标选中了， 就会变颜色-->
-        <!-- 事件监听， 在 输入密码， focuse 的时候， 查看手机号是否为 11 位-->
         <EditText
             android:id="@+id/textBox_pwd"
             android:layout_width="match_parent"

@@ -166,6 +166,12 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="组件group3"/>
+    <Button
+        android:id="@+id/btn_jump4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="组件group4_ListView"/>
 
 
 

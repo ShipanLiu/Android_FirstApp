@@ -105,7 +105,7 @@ public class UserDBHelper extends SQLiteOpenHelper {
             mWDB.beginTransaction();
 //            mWDB.insert(TABLE_NAME, null, values);
             //int i = 10 / 0;
-            mWDB.insert(TABLE_NAME, null, values);
+            mWDB.insert(TABLE_NAME,  null, values);
 
             // 假如上面的 insert 执行成功， 就会执行这行 代码， 否则不执行
             mWDB.setTransactionSuccessful();
