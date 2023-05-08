@@ -22,10 +22,12 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.chapter06_sql.database.DBHelper2_PwdLogin;
+import com.example.chapter06_sql.entity.LoginInfoEntity;
 import com.example.chapter06_sql.utils.Utils;
 
 
-public class t03_PhonePassowrdUsingSQL extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener, View.OnClickListener {
+public class t03_PhonePassowrdUsingSQL extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener, View.OnClickListener, View.OnFocusChangeListener {
 
     private TextView textView_pwd;
     private EditText editText_pwd;
@@ -43,6 +45,10 @@ public class t03_PhonePassowrdUsingSQL extends AppCompatActivity implements Radi
 
     // 储存密码（只能 储存一个， 新的手机号 会覆盖原来的）
     private SharedPreferences preferences;
+
+
+    // 改用sql 来存储
+    private DBHelper2_PwdLogin mHelper;
 
 
 
@@ -91,12 +97,73 @@ public class t03_PhonePassowrdUsingSQL extends AppCompatActivity implements Radi
         // 保存密码到 sharedPreferences
         preferences = getSharedPreferences("config", Context.MODE_PRIVATE);
 
-        loadMemory();
+        //        loadMemory();
+
+        // 在光标点击  密码框的时候， 假如 数据库里面 存着 数据， 那就 把 密码自动填上
+        editText_pwd.setOnFocusChangeListener(this);
 
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        mHelper = DBHelper2_PwdLogin.getInstance(this);
+        mHelper.openReadLink();
+        mHelper.openWriteLink();
+
+
+        // 访问数据库
+        reload();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        /* 在 onStop的时候， 关掉mHelper*/
+        mHelper.closeLink();
+    }
+
+
+
+    // 光标 点击 密码框的时候
+    @Override
+    public void onFocusChange(View view, boolean hasFocus) {
+        if(view.getId() == R.id.et_password && hasFocus) {
+            // 根据手机号， 把密码查出来， 然后把 密码 填上
+            LoginInfoEntity loginInfo = mHelper.queryByPhone(editText_pwd.getText().toString());
+            if(loginInfo != null) {
+                editText_pwd.setText(loginInfo.password);
+                checkBox_pwd_remember.setChecked(loginInfo.remember);
+            } else {
+                // 没有查到， 返回的loginInfo 是一个 null
+                editText_pwd.setText("");
+                checkBox_pwd_remember.setChecked(false);
+            }
+
+        }
+    }
+
+
+    public void reload() {
+        // 使用sql reload ， 把table里面最后一条数据 填进去
+        LoginInfoEntity loginInfo = mHelper.queryTop();
+        if(loginInfo != null && loginInfo.remember) {
+            editText_phone.setText(loginInfo.phone);
+            editText_pwd.setText(loginInfo.password);
+            checkBox_pwd_remember.setChecked(loginInfo.remember);
+        } else {
+            editText_phone.setText(null);
+            editText_pwd.setText(null);
+            checkBox_pwd_remember.setChecked(false);
+        }
+    }
+
+
+    // loadMemory 是 针对 sharedPreferences 来讲的。
     private void loadMemory() {
-        // 在重新启动page 的时候， 把 存下来的密码存进去
+
+//         在重新启动page 的时候， 把 存下来的密码存进去
         boolean pwd_remembered = preferences.getBoolean("pwd_remembered", false);
         if(pwd_remembered) {
             String phone = preferences.getString("phone", null);
@@ -117,13 +184,6 @@ public class t03_PhonePassowrdUsingSQL extends AppCompatActivity implements Radi
         }
     }
 
-//    @Override
-//    protected void onStart() {
-//        super.onStart();
-//        // 在重新启动page 的时候， 把 存下来的密码存进去
-//
-//
-//    }
 
     @Override
     public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
@@ -154,6 +214,7 @@ public class t03_PhonePassowrdUsingSQL extends AppCompatActivity implements Radi
                 break;
         }
     }
+
 
 
     // for "addTextChangedListener"
@@ -262,15 +323,21 @@ public class t03_PhonePassowrdUsingSQL extends AppCompatActivity implements Radi
 
         // 登陆成功之后，把密码存起来
         if(checkBox_pwd_remember.isChecked()) {
-//            SharedPreferences.Editor editer = preferences.edit();
-//            editer.putString("phone", editText_phone.getText().toString());
-//            editer.putString("pwd", editText_pwd.getText().toString());
-//            editer.putBoolean("pwd_remembered", checkBox_pwd_remember.isChecked());
-//            editer.commit();
 
-            // 存到数据库里面
-
+            // 存到 SharedPreferences
+            SharedPreferences.Editor editer = preferences.edit();
+            editer.putString("phone", editText_phone.getText().toString());
+            editer.putString("pwd", editText_pwd.getText().toString());
+            editer.putBoolean("pwd_remembered", checkBox_pwd_remember.isChecked());
+            editer.commit();
          }
+
+        // 存到数据库里面(我不管你选中 记住密码 还是不， 我都给你 保存一份)
+        LoginInfoEntity info = new LoginInfoEntity();
+        info.phone = editText_phone.getText().toString();
+        info.password = editText_pwd.getText().toString();
+        info.remember = checkBox_pwd_remember.isChecked();
+        mHelper.save(info);
 
     }
 }

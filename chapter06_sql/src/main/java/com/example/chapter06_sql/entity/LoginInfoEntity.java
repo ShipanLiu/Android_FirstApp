@@ -1,15 +1,15 @@
 package com.example.chapter06_sql.entity;
 
-public class LoginInfo {
+public class LoginInfoEntity {
     public int id;
     public String phone;
     public String password;
     public boolean remember = false;
 
-    public LoginInfo(){}
+    public LoginInfoEntity(){}
 
 
-    public LoginInfo(String phone, String password, boolean remember) {
+    public LoginInfoEntity(String phone, String password, boolean remember) {
         this.phone = phone;
         this.password = password;
         this.remember = remember;

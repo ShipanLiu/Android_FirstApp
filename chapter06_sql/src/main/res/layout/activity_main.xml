@@ -28,6 +28,12 @@
         android:layout_height="@dimen/item_layout_height"
         android:text="Phone忘记密码升级"
         android:textAllCaps="false"/>
+    <Button
+        android:id="@+id/btn_room"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_layout_height"
+        android:text="测试 ROOM"
+        android:textAllCaps="false"/>
 
 
 

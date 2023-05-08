@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ListView;
+import android.widget.SeekBar;
 
 import com.example.chapter05_shape.adapter.PlanetBaseAdapter1;
 import com.example.chapter05_shape.entity.Planet;
@@ -16,7 +17,7 @@ import com.example.chapter05_shape.utils.Utils;
 
 import java.util.List;
 
-public class t02_Components4_listView extends AppCompatActivity implements AdapterView.OnItemClickListener, CompoundButton.OnCheckedChangeListener {
+public class t02_Components4_listView extends AppCompatActivity implements AdapterView.OnItemClickListener, CompoundButton.OnCheckedChangeListener, SeekBar.OnSeekBarChangeListener {
 
     private List<Planet> planetList;
     private ListView listView_Planet;
@@ -46,6 +47,14 @@ public class t02_Components4_listView extends AppCompatActivity implements Adapt
         ck_divider.setOnCheckedChangeListener(this);
         ck_selectBackgroundColor = findViewById(R.id.ck_selector);
         ck_selectBackgroundColor.setOnCheckedChangeListener(this);
+
+
+        // seekbar
+        SeekBar ques1_seekbar = findViewById(R.id.ques1_seekbar);
+        ques1_seekbar.setOnSeekBarChangeListener(this);
+        SeekBar ques2_seekbar = findViewById(R.id.ques2_seekbar);
+        ques2_seekbar.setOnSeekBarChangeListener(this);
+
 
     }
 
@@ -83,4 +92,45 @@ public class t02_Components4_listView extends AppCompatActivity implements Adapt
                 break;
         }
     }
+
+
+    /* here is for seekbar*/
+
+    /* 开始 拖动时*/
+    @Override
+    public void onStartTrackingTouch(SeekBar seekBar) {
+
+    }
+
+    /* 停止 拖动时*/
+    @Override
+    public void onStopTrackingTouch(SeekBar seekBar) {
+        switch (seekBar.getId()) {
+            case R.id.ques1_seekbar:
+                String str = "ques1, progress: " + seekBar.getProgress();
+                Utils.showToast(this, str);
+                break;
+            case R.id.ques2_seekbar:
+                String str1 = "ques2, progress: " + seekBar.getProgress();
+                Utils.showToast(this, str1);
+                break;
+        }
+    }
+
+
+    @Override
+    public void onProgressChanged(SeekBar seekBar, int progress, boolean triggerFromUser) {
+//        switch (seekBar.getId()) {
+//            case R.id.ques1_seekbar:
+//                String str = "ques1, progress: " + progress + " triggerFromUser: " + (triggerFromUser ? "yes" : "no");
+//                Utils.showToast(this, str);
+//                break;
+//            case R.id.ques2_seekbar:
+//                String str1 = "ques2, progress: " + progress + " triggerFromUser: " + (triggerFromUser ? "yes" : "no");
+//                Utils.showToast(this, str1);
+//                break;
+//        }
+    }
+
+
 }

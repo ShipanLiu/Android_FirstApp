@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.btn_sharedPreferences1).setOnClickListener(this);
         findViewById(R.id.btn_sqlLite).setOnClickListener(this);
         findViewById(R.id.btn_phone_password).setOnClickListener(this);
+        findViewById(R.id.btn_room).setOnClickListener(this);
     }
 
     @Override
@@ -45,6 +46,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Intent intent3 = new Intent(this, t03_PhonePassowrdUsingSQL.class);
                 intent3.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent3);
+                break;
+            case R.id.btn_room:
+                Intent intent4 = new Intent(this, t04_ROOM.class);
+                intent4.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent4);
                 break;
         }
     }

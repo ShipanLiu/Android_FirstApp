@@ -40,6 +40,8 @@ public class t02_SQLite extends AppCompatActivity implements View.OnClickListene
         findViewById(R.id.btn_query).setOnClickListener(this);
     }
 
+    /*注意 在 onStart的时候拿到 helper*/
+
     @Override
     protected void onStart() {
         super.onStart();

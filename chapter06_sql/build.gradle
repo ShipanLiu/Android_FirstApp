@@ -14,6 +14,15 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        /* @Database(entities = {BookInfo.class}, version = 1, exportSchema = true)  指定生成schema文件的 地方*/
+        /*  chapter06_sql/schemas/....       */
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = ["room.schemaLocation": "$projectDir/schemas".toString()]//指定数据库schema导出的位置
+            }
+        }
+
     }
 
     buildTypes {
@@ -36,4 +45,9 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+
+    /* ROOM 的 插件*/
+    implementation 'androidx.room:room-runtime:2.5.1'
+    /*假如 写错了， 就会出现： Caused by: java.lang.RuntimeException: Cannot find implementation for com.example.chapter06_sql.database.BookDatabase_Room. BookDatabase_Room_Impl does not exist*/
+    annotationProcessor 'androidx.room:room-compiler:2.5.1'
 }
