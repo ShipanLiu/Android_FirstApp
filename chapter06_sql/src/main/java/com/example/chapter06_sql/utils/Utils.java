@@ -11,6 +11,7 @@ import java.util.Date;
 import java.util.Random;
 
 public class Utils {
+
     public static int dip2px(Context context, float dpValue) {
         float scale = context.getResources().getDisplayMetrics().density;
         // 四舍五入

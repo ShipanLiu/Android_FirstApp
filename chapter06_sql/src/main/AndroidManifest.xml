@@ -9,6 +9,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FirstApp">
         <activity
+            android:name=".t07_ShoppingCart"
+            android:exported="false" />
+        <activity
+            android:name=".t06_ShoppingItemDetail"
+            android:exported="false" />
+        <activity
+            android:name=".t05_shopping_page"
+            android:exported="false" />
+        <activity
             android:name=".t04_ROOM"
             android:exported="false" />
         <activity

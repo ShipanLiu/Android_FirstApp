@@ -65,6 +65,7 @@ public class UserDBHelper extends SQLiteOpenHelper {
     }
 
     // 创建数据库，执行建表语句
+    // _id 是 为了防止 假如有一个 attribute 也叫 id， 防止 重复（再 移植数据库的时候）
     @Override
     public void onCreate(SQLiteDatabase db) {
         String sql = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " (" +

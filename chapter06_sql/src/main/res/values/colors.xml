@@ -13,5 +13,7 @@
     <color name="light_blue">#389FD6</color>
     <color name="orange">#EDA200</color>
     <color name="gray">#C0C0C0</color>
+    <color name="red">#DB5860</color>
+
 
 </resources>
