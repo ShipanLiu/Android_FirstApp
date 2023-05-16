@@ -1,17 +1,21 @@
 package com.example.chapter06_sql;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.style.TtsSpan;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.chapter06_sql.adapter.CartAdapter;
 import com.example.chapter06_sql.database.DBHelper3_ShoppingCart;
 import com.example.chapter06_sql.entity.CartInfo;
 import com.example.chapter06_sql.entity.GoodsInfo;
@@ -21,12 +25,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class t07_ShoppingCart extends AppCompatActivity implements View.OnClickListener {
+public class t09_ShoppingCart_using_list extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener {
 
     private TextView tv_count;
     private TextView tv_total_price;
-    private LinearLayout linearLayout_cart;
+    private ListView listView_cart;
     private DBHelper3_ShoppingCart mHelper;
+    private CartAdapter cartAdapter;
 
     // 声明一个购物车中的商品信息列表
     private List<CartInfo> mCartList;
@@ -39,12 +44,12 @@ public class t07_ShoppingCart extends AppCompatActivity implements View.OnClickL
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.t07_shopping_cart);
+        setContentView(R.layout.t09_shopping_cart_using_list);
 
         // reste the title
         TextView tv_title = findViewById(R.id.tv_title);
         tv_title.setText("welcome to Cart");
-        linearLayout_cart = findViewById(R.id.ll_cart);
+        listView_cart = findViewById(R.id.listView_cart);
         tv_total_price = findViewById(R.id.tv_total_price);
 
         // 购物车里面商品的 数量，  从 MyApplication 中的 全局变量 拿出来，
@@ -72,80 +77,84 @@ public class t07_ShoppingCart extends AppCompatActivity implements View.OnClickL
     }
 
 
+    /* 转变 成 使用listview， 主要是 这一部分的转变*/
     private void showCart() {
-        // 移除下面的所有子视图(linearLayout 里的所有 item 清除，起到 刷新的效果，要不然就会 累加，一直添加)
-        linearLayout_cart.removeAllViews();
-        // 查询购物车数据库中所有的商品记录
+        // first get datalist  ---> give datalist to an adapter    ---> give adapter to listview
+
+        // get cart ino
         mCartList = mHelper.queryAllCartInfo();
-        if (mCartList.size() == 0) {
+        if(mCartList.size() == 0) {
             return;
         }
 
-        for (CartInfo info : mCartList) {
-            // 根据商品编号查询商品数据库中的商品记录,  because I also need the price
-            GoodsInfo goods = mHelper.queryGoodsInfoById(info.goodsId);
-            // 先放到 一个Map 里， 存起来
-            mGoodsMap.put(info.goodsId, goods);
-
-            // 现在开始 显示到列表里面
-            // 获取布局文件item_cart.xml的根视图， 就是一个 item 的 layout
-            View view = LayoutInflater.from(this).inflate(R.layout.item_cart, null);
-            ImageView iv_thumb = view.findViewById(R.id.iv_thumb);
-            TextView tv_name = view.findViewById(R.id.tv_name);
-            TextView tv_desc = view.findViewById(R.id.tv_desc);
-            TextView tv_count = view.findViewById(R.id.tv_count);
-            // 单价
-            TextView tv_price = view.findViewById(R.id.tv_price);
-            // 总价
-            TextView tv_sum = view.findViewById(R.id.tv_sum);
-
-            iv_thumb.setImageURI(Uri.parse(goods.picPath));
-            tv_name.setText(goods.name);
-            tv_desc.setText(goods.description);
-            tv_count.setText(String.valueOf(info.count));
-            tv_price.setText(String.valueOf((int) goods.price));
-            // 设置商品总价
-            tv_sum.setText(String.valueOf((int) (info.count * goods.price)));
-
-            // 给商品行添加长按事件。长按商品行就删除该商品
-            view.setOnLongClickListener(v -> {
-                AlertDialog.Builder builder = new AlertDialog.Builder(t07_ShoppingCart.this);
-                builder.setMessage("delete " + goods.name + " item from cart?");
-                builder.setPositiveButton("yes", (dialog, which) -> {
-                    // 移除当前视图
-                    linearLayout_cart.removeView(v);
-                    // 删除该商品(Map中 delete + databse 中delate)
-                    deleteGoods(info);
-                });
-                builder.setNegativeButton("no", null);
-                builder.create().show();
-                // 这个 return 是针对  listener 的。
-                return true;
-            });
-
-            // 给商品行添加点击事件。点击商品行跳到商品的详情页
-            view.setOnClickListener(v -> {
-                Intent intent = new Intent(this, t06_ShoppingItemDetail.class);
-                // 传一下 参数 goods_id
-                intent.putExtra("goods_id", goods.id);
-                startActivity(intent);
-            });
-
-            // 往购物车列表添加该商品行
-            linearLayout_cart.addView(view);
+        // to get goodinfo
+        for(CartInfo item : mCartList) {
+            GoodsInfo goodsInfo = mHelper.queryGoodsInfoById(item.goodsId);
+            // the map is used to save goodsinfo
+            mGoodsMap.put(item.goodsId, goodsInfo);
+            // 把 查出来 的 对应的 GoodsInfo 存入到 item 里面
+            item.goodsInfo = goodsInfo;
         }
 
-        // 重新计算购物车中的商品总金额
-        refreshTotalPrice();
+        // now you get the datalist, so it's time to get the adapter
+        cartAdapter = new CartAdapter(this, mCartList);
+        // ListView receive the adapter
+        listView_cart.setAdapter(cartAdapter);
+
+        // add click short listener, go to detail page
+        listView_cart.setOnItemClickListener(this);
+        // add click long listener,  delete item
+        listView_cart.setOnItemLongClickListener(this);
+
+
+
+    }
+
+    /* ListView */
+
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+        // go to deltail page with goodsId
+        Intent intent = new Intent(this, t06_ShoppingItemDetail.class);
+        intent.putExtra("goods_id", mCartList.get(position).goodsId);
+        startActivity(intent);
+
+    }
+
+    @Override
+    public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long id) {
+        // 长按的话, will delete
+
+        // targert item
+        CartInfo info =  mCartList.get(position);
+        // dialog
+        AlertDialog.Builder builder =  new AlertDialog.Builder(t09_ShoppingCart_using_list.this);
+        builder.setMessage("delete " + info.goodsInfo.name + " ?");
+        builder.setPositiveButton("yes", (dialog, which) -> {
+            // delete this info in list
+            mCartList.remove(position);
+
+            //列表刷新， 通过 适配器
+            cartAdapter.notifyDataSetChanged();
+
+            //delete goods from Map and database
+            deleteGoods(info);
+        });
+
+        builder.setNegativeButton("no", null);
+        builder.create().show();
+        return true;
     }
 
 
     private void deleteGoods(CartInfo info) {
+        // 假如 info.count = 5, 则  MyApplication.getInstance().goodsCount -= 5
         MyApplication.getInstance().goodsCount -= info.count;
         // 从购物车的数据库中删除商品
         mHelper.deleteCartInfoByGoodsId(info.goodsId);
         // 从购物车的列表中删除商品
         CartInfo removed = null;
+        // for循环 只负责查询出来， 在 for 循环里面 千万不要操作，
         for (CartInfo cartInfo : mCartList) {
             if (cartInfo.goodsId == info.goodsId) {
                 removed = cartInfo;
@@ -178,7 +187,8 @@ public class t07_ShoppingCart extends AppCompatActivity implements View.OnClickL
         if (MyApplication.getInstance().goodsCount == 0) {
             linearLayout_empty.setVisibility(View.VISIBLE);
             linearLayout_content.setVisibility(View.GONE);
-            linearLayout_cart.removeAllViews();
+            //列表刷新， 通过 适配器
+            cartAdapter.notifyDataSetChanged();
         } else {
             linearLayout_content.setVisibility(View.VISIBLE);
             linearLayout_empty.setVisibility(View.GONE);
@@ -197,7 +207,7 @@ public class t07_ShoppingCart extends AppCompatActivity implements View.OnClickL
 
             case R.id.btn_shopping_channel:
                 // 从购物车页面跳到商场页面
-                Intent intent = new Intent(this, t05_shopping_page.class);
+                Intent intent = new Intent(this, t08_shopping_page_using_list.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
                 break;
@@ -222,5 +232,7 @@ public class t07_ShoppingCart extends AppCompatActivity implements View.OnClickL
                 break;
         }
     }
+
+
 
 }

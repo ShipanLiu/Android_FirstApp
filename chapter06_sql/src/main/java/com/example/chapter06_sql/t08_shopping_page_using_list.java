@@ -1,5 +1,6 @@
 package com.example.chapter06_sql;
 
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -19,7 +20,7 @@ import com.example.chapter06_sql.utils.Utils;
 
 import java.util.List;
 
-public class t05_shopping_page extends AppCompatActivity implements View.OnClickListener {
+public class t08_shopping_page_using_list extends AppCompatActivity implements View.OnClickListener {
 
     // define a mHelper
     private DBHelper3_ShoppingCart mHelper;
@@ -30,7 +31,7 @@ public class t05_shopping_page extends AppCompatActivity implements View.OnClick
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.t05_shopping_page);
+        setContentView(R.layout.t08_shopping_page_using_list);
 
         TextView tv_title = findViewById(R.id.tv_title);
         tv_title.setText("Phone");
@@ -104,7 +105,7 @@ public class t05_shopping_page extends AppCompatActivity implements View.OnClick
             tv_name.setText(info.name);
             tv_price.setText(String.valueOf((int) info.price));
 
-             //添加到购物车
+            //添加到购物车
             btn_add.setOnClickListener(v -> {
                 addToCart(info.id, info.name);
             });
@@ -144,7 +145,7 @@ public class t05_shopping_page extends AppCompatActivity implements View.OnClick
             case R.id.iv_cart:
                 // 点击了购物车图标
                 // 从商场页面跳到购物车页面
-                Intent intent = new Intent(this, t07_ShoppingCart.class);
+                Intent intent = new Intent(this, t09_ShoppingCart_using_list.class);
                 // 设置启动标志，避免多次返回同一页面的
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);

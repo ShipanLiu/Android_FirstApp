@@ -40,6 +40,12 @@
         android:layout_height="@dimen/item_layout_height"
         android:text="Shopping cart"
         android:textAllCaps="false"/>
+    <Button
+        android:id="@+id/btn_cart_byUsingList"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_layout_height"
+        android:text="Shopping cart using ListView"
+        android:textAllCaps="false"/>
 
 
 </LinearLayout>

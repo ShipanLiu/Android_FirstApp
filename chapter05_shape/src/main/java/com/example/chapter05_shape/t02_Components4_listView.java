@@ -70,6 +70,7 @@ public class t02_Components4_listView extends AppCompatActivity implements Adapt
                 // 显示分隔线
                 if (ck_divider.isChecked()) {
                     // 从资源文件获得图形对象
+                    // 黑色的 分割线。 由 颜色  转换成 drawable，  为了 防止 冲突， 把 主题也 传进去
                     Drawable drawable = getResources().getDrawable(R.color.black, getTheme());
                     listView_Planet.setDivider(drawable);
                     // 设置列表视图的分隔线高度

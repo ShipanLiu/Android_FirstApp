@@ -20,6 +20,7 @@ public class PlanetBaseAdapter1 extends BaseAdapter {
     // I need a data list
     private List<Planet> mPlaneList;
 
+    // I expect you give me  context + dataList
     public PlanetBaseAdapter1(Context mContext, List<Planet> mPlaneList) {
         this.mContext = mContext;
         this.mPlaneList = mPlaneList;
@@ -47,6 +48,7 @@ public class PlanetBaseAdapter1 extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
+        // 假如 convertView 用完了
         if (convertView == null){
             // 根据布局文件item_list.xml生成转换视图对象
             convertView = LayoutInflater.from(mContext).inflate(R.layout.item_list, null);
@@ -57,6 +59,7 @@ public class PlanetBaseAdapter1 extends BaseAdapter {
             // 将视图持有者保存到转换视图当中
             convertView.setTag(holder);
         }else{
+            // 上面放进去， 下面取出来
             holder = (ViewHolder) convertView.getTag();
         }
 

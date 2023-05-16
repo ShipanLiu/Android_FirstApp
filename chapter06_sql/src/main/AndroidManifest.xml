@@ -9,6 +9,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FirstApp">
         <activity
+            android:name=".t09_ShoppingCart_using_list"
+            android:exported="false" />
+        <activity
+            android:name=".t08_shopping_page_using_list"
+            android:exported="false" />
+        <activity
             android:name=".t07_ShoppingCart"
             android:exported="false" />
         <activity

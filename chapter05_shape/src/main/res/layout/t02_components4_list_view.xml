@@ -41,7 +41,7 @@
         />
 
 
-    <!--now seekbar-->
+    <!--下面的是 seekbar-->
     <!-- ques1  Question Category 1-->
     <TextView
         android:layout_width="match_parent"

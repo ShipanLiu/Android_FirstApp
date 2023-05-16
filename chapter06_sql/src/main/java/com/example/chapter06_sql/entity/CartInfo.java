@@ -7,6 +7,8 @@ public class CartInfo {
     public int goodsId;
     // 商品数量
     public int count;
+    // 商品信息
+    public GoodsInfo goodsInfo;
 
     public CartInfo(){}
 
@@ -14,5 +16,6 @@ public class CartInfo {
         this.id = id;
         this.goodsId = goodsId;
         this.count = count;
+        this.goodsInfo = new GoodsInfo();
     }
 }

@@ -8,13 +8,14 @@
     <!-- 把 title 和  购物车图标 放上去。-->
     <include layout="@layout/title_shopping" />
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    <!--
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+  因为listview 本身就可以 scroll， 所以 就 不需要 scrollview 了
+
+
+-->
+
+
 
             <LinearLayout
                 android:id="@+id/ll_content"
@@ -76,15 +77,21 @@
                 </LinearLayout>
 
 
-                <!--这是一个 空的 LinearLayout， 为了 展示 cart 中的手机 item-->
+                <!--这里 不再使用 linear， 而是使用 listview-->
 
-                <LinearLayout
-                    android:id="@+id/ll_cart"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical" />
+<!--                <LinearLayout-->
+<!--                    android:id="@+id/ll_cart"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="vertical" />-->
 
                 <!--第二行-->
+                <ListView
+                    android:id="@+id/listView_cart"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -157,6 +164,5 @@
                     android:textColor="@color/black"
                     android:textSize="17sp" />
             </LinearLayout>
-    </RelativeLayout>
-    </ScrollView>
+
 </LinearLayout>
